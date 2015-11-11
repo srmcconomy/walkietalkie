@@ -3,11 +3,12 @@ package com.android.walkietalkie;
 /**
  * Created by Habeeb Ahmed on 11/11/2015.
  */
-public class AudioOutputManager implements ServerClient.IncomingAudioListener {
+public class AudioReceiverManager implements ServerClient.IncomingAudioListener {
     private ServerClient mServerClient;
 
-    public AudioOutputManager(ServerClient serverClient) {
+    public AudioReceiverManager(ServerClient serverClient) {
         mServerClient = serverClient;
+        registerIncomingAudioListener();
     }
 
     // register and incoming audio listener with the mServerClient.
@@ -17,7 +18,7 @@ public class AudioOutputManager implements ServerClient.IncomingAudioListener {
     }
 
     @Override
-    public void onIncomingAudio() {
+    public void onIncomingAudio(byte[] data) {
 
     }
 }

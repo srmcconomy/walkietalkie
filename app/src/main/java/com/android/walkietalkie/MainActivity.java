@@ -3,19 +3,18 @@ package com.android.walkietalkie;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+
     private View mLobbyScreen;
     private View mPushToTalkScreen;
     private View mLoadingScreen;
 
     private ServerClient mServerClient;
-    private AudioOutputManager mAudioOutputManager;
+    private AudioReceiverManager mAudioOutputManager;
     private AudioRecordingManager mAudioRecordingManager;
 
     @Override
@@ -24,12 +23,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mServerClient = new ServerClient();
-        mAudioOutputManager = new AudioOutputManager(mServerClient);
+        mAudioOutputManager = new AudioReceiverManager(mServerClient);
         mAudioRecordingManager = new AudioRecordingManager(mServerClient);
 
         mLobbyScreen = findViewById(R.id.lobby_screen);
         mPushToTalkScreen = findViewById(R.id.push_to_talk_screen);
         mLoadingScreen = findViewById(R.id.loading_screen);
+
         showLobbyScreen();
         setClickListeners();
     }
