@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#ffffffff</color>
+    <color name="light_grey">#96ffffff</color>
+    <color name="iPhone_grey">#E5E7EA</color>
+    <color name="tutorial_bg">#C8000b19</color>
+    <color name="lighter_grey">#e5ffffff</color>
+    <color name="separator">#4Bffffff</color>
+    <color name="black">#000000</color>
+    <color name="semi_black">#75000000</color>
+    <color name="red">#ff0000</color>
+    <color name="text_highlight_lightred">#7DEB5353</color>
+    <color name="text_highlight_holo">#23c4ff</color>
+    <color name="text_highlight_search">#6633b5e5</color>
+    <color name="credit_highlight">#8fceff</color>
+    <color name="actionbar_title_color">#ffffff</color>
+    <color name="badge_text">#6e1d1d</color>
+    <color name="badge_shadow">#ff8888</color>
+    <color name="two_pane_conv_list_bg">#141c21</color>
+    <color name="two_pane_msg_view_bg">#2c3236</color>
+    <color name="text_shadow">#1c568e</color>
+    <color name="text_color_hint">#acb2b7</color>
+    <color name="text_color_hint_grey">#b2b2b2</color>
+    <color name="text_green">#35de35</color>
+    <color name="drawer_view_bg">#374047</color>
+    <color name="drawer_view_light_grey">#c8d5de</color>
+    <color name="drawer_view_credits_btn_shadow">#408ac0</color>
+    <color name="drawer_view_dark_bg">#252e35</color>
+    <color name="dialing_banner">#e54382b2</color>
+    <color name="dialing_free_banner">#e586bd02</color>
+    <color name="dialer_background">#000b19</color>
+    <color name="quick_reply_bg">#1f2226</color>
+    <color name="message_divider_text">#ffffffff</color>
+    <color name="message_divider_bar">#ff003d6a</color>
+    <color name="progress_green">#19d8a7</color>
+    <color name="progress_red">#fb2053</color>
+    <color name="progress_grey">#454C53</color>
+    <color name="out_message_text">#1e1e1f</color>
+    <color name="out_message_date">#767679</color>
+    <color name="in_message_text">#ffffff</color>
+    <color name="in_message_date">#96ffffff</color>
+    <color name="selector">#22888888</color>
+    <color name="error_banner_theme_bg">#c81442</color>
+    <drawable name="link_focused">#f2b818</drawable>
+    <color name="answer_green">#57cc72</color>
+
+    <!-- Theme resources -->
+    <color name="dark_theme_background">#ff2b2e38</color>
+    <color name="light_blue_header">#547df9</color>
+    <color name="dialing_light_blue_header">#e5547df9</color>
+    <color name="dark_blue_header">#4762db</color>
+    <color name="dialing_dark_blue_header">#e54762db</color>
+    <color name="light_grey_header">#586073</color>
+    <color name="dialing_light_grey_header">#e5586073</color>
+    <color name="dark_grey_header">#42485a</color>
+    <color name="dialing_dark_grey_header">#e542485a</color>
+    <color name="orange_header">#fe6f48</color>
+    <color name="dialing_orange_header">#e5fe6f48</color>
+    <color name="yellow_header">#feb423</color>
+    <color name="dialing_yellow_header">#e5feb423</color>
+    <color name="green_header">#2ec08e</color>
+    <color name="dialing_green_header">#e52ec08e</color>
+    <color name="purple_header">#a94dba</color>
+    <color name="dialing_purple_header">#e5a94dba</color>
+    <color name="pink_header">#ea417a</color>
+    <color name="dialing_pink_header">#e5ea417a</color>
+    <color name="red_header">#e73d49</color>
+    <color name="dialing_red_header">#e5e73d49</color>
+    <color name="green_pressed">#2eb18e</color>
+    <color name="red_pressed">#c13d49</color>
+
+    <color name="primary_blue">#547df9</color>
+    <color name="primary_dark_blue">#3949AD</color>
+    <color name="primary_purple">#A94DBA</color>
+    <color name="primary_dark_purple">#A94DBA</color>
+    <color name="primary_pink">#EA417A</color>
+    <color name="primary_dark_pink">#C2185B</color>
+    <color name="primary_red">#E73D49</color>
+    <color name="primary_dark_red">#EA3B44</color>
+    <color name="primary_orange">#FE6F48</color>
+    <color name="primary_dark_orange">#E64A19</color>
+    <color name="primary_yellow">#FEB423</color>
+    <color name="primary_dark_yellow">#FFB423</color>
+    <color name="primary_green">#2EC08E</color>
+    <color name="primary_dark_green">#329976</color>
+    <color name="primary_grey">#586073</color>
+    <color name="primary_dark_grey">#373949</color>
+
+    <color name="accent_pink">#FF2C73</color>
+    <color name="accent_green">#1ADE98</color>
+    <color name="accent_blue">#3FC4FF</color>
+    <color name="accent_orange">#FE6F48</color>
+    <color name="accent_red">#E73D49</color>
+    <color name="accent_yellow">#FFBF3C</color>
+
+    <color name="light_theme_list_divider">#d9d9d9</color>
+    <color name="light_theme_conversation_contact">#222222</color>
+    <color name="light_theme_conversation_last_message">#8c8e91</color>
+    <!--  <color name="light_theme_primary">#de000000</color>
+    <color name="light_theme_secondary">#8a000000</color>-->
+    <color name="light_theme_sys_message_date">#bbbcbe</color>
+    <color name="light_theme_off_white">#ebedf2</color>
+    <color name="light_theme_avatar_background">#f1f1f1</color>
+    <drawable name="light_theme_convo_activated">#E5E7EA</drawable>
+    <drawable name="light_theme_convo_pressed">#F0F2F5</drawable>
+    <color name="light_theme_alternate_background">#FBFBFB</color>
+
+    <color name="dark_theme_list_divider">#757575</color>
+    <!-- <color name="dark_theme_primary">#ffffffff</color>
+    <color name="dark_theme_secondary">#b3ffffff</color> -->
+    <color name="dark_theme_sys_message_date">#8c8e91</color>
+    <color name="dark_theme_conversation_last_message">#8c8e91</color>
+    <color name="dark_theme_off_grey">#393e49</color>
+    <color name="dark_theme_avatar_background">#515151</color>
+    <drawable name="dark_theme_convo_activated">#494C55</drawable>
+    <drawable name="dark_theme_convo_pressed">#404249</drawable>
+    <color name="dark_theme_alternate_background">#33363F</color>
+    <color name="crop_button_bar">#f3f3f3</color>
+    <color name="crop_button_text">#666666</color>
+    <color name="crop_selector_pressed">#1a000000</color>
+    <color name="crop_selector_focused">#77000000</color>
+    <color name="vpi__background_holo_dark">#ff000000</color>
+    <color name="vpi__background_holo_light">#fff3f3f3</color>
+    <color name="vpi__bright_foreground_holo_dark">@color/vpi__background_holo_light</color>
+    <color name="vpi__bright_foreground_holo_light">@color/vpi__background_holo_dark</color>
+    <color name="vpi__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
+    <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
+    <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
+    <color name="appwidget_text">#ffffffff</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="bg_item_normal_state">@color/primary_grey</color>
+    <color name="bg_item_dragging_state">@color/light_grey</color>
+    <color name="bg_item_dragging_active_state">@color/light_grey</color>
+    <color name="bg_item_swiping_state">@color/bg_item_normal_state</color>
+    <color name="bg_item_swiping_active_state">#ff9999ff</color>
+
+    <color name="bg_group_item_normal_state">@color/primary_grey</color>
+    <color name="bg_group_item_normal_pressed_state">@color/light_grey</color>
+    <color name="bg_group_item_expanded_state">@color/light_grey</color>
+    <color name="bg_group_item_expanded_pressed_state">@color/primary_grey</color>
+    <color name="bg_group_item_dragging_state">@color/light_grey</color>
+    <color name="bg_group_item_dragging_active_state">@color/light_grey</color>
+    <color name="bg_group_item_swiping_state">#ffddccff</color>
+    <color name="bg_group_item_swiping_active_state">#ffbb99ff</color>
+
+    <color name="bg_swipe_item_neutral">@color/primary_grey</color>
+    <color name="bg_swipe_item_left">#fff9930d</color>
+    <color name="bg_swipe_item_right">#ff2f8b2a</color>
+    <color name="bg_swipe_group_item_left">#fff45f30</color>
+    <color name="bg_swipe_group_item_right">#ff295db3</color>
+
+    <color name="snackbar_action_color_done">#ffccccff</color>
+</resources>
