@@ -3,6 +3,7 @@ package com.android.walkietalkie;
 import android.content.Context;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -11,6 +12,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -18,9 +20,12 @@ import java.util.List;
  */
 public class ServerClient {
     private static final int BROADCAST_PORT = 5000;
+    private static final int MAX_BROADCAST_SIZE_BYTES = 65508;
 
     private Context mContext;
-    private Socket mSocket;
+    private DatagramSocket mSocket;
+
+    private List<Byte> mOutputAudioBuffer;
 
     public interface IncomingAudioListener {
         void onIncomingAudio(byte[] data);
@@ -30,19 +35,77 @@ public class ServerClient {
 
     public ServerClient(Context context){
         mContext = context;
+        mOutputAudioBuffer = new ArrayList<Byte>();
         mIncomingAudioListeners = new ArrayList<IncomingAudioListener>();
-        mSocket = new DatagramSocket(BROADCAST_PORT);
-        socket.setBroadcast(true);
-    }
-
-    public void sendAudioByes (byte [] audio) {
         try {
-            DatagramPacket packet = new DatagramPacket(audio, audio.length, getBroadcastAddress(), BROADCAST_PORT);
-            socket.send(packet);
+            mSocket = new DatagramSocket(BROADCAST_PORT);
+            mSocket.setBroadcast(true);
         } catch (SocketException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }
+        startSender();
+        startReceiver();
+    }
+
+    private void startSender() {
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                // loop infinitely and check if the mOutputAudioBuffer has any data. If so then flush it to the socket
+                while(true) {
+                    if (mOutputAudioBuffer.size() > MAX_BROADCAST_SIZE_BYTES) {
+                        byte [] outgoingBytes = new byte[MAX_BROADCAST_SIZE_BYTES];
+                        Iterator<Byte> it = mOutputAudioBuffer.iterator();
+                        int count = 0;
+                        while (it.hasNext()) {
+                            outgoingBytes[count] = it.next();
+                            it.remove();
+                            count++;
+                            if (count == MAX_BROADCAST_SIZE_BYTES) {
+                                break;
+                            }
+                        }
+                        try {
+                            DatagramPacket packet = new DatagramPacket(outgoingBytes, MAX_BROADCAST_SIZE_BYTES, getBroadcastAddress(), BROADCAST_PORT);
+                            mSocket.send(packet);
+                        } catch (SocketException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }.execute();
+    }
+
+    private void startReceiver() {
+
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+                // loop infinitely and check if the mOutputAudioBuffer has any data. If so then flush it to the socket
+                while(true) {
+                    byte[] buf = new byte[MAX_BROADCAST_SIZE_BYTES];
+                    DatagramPacket packet = new DatagramPacket(buf, buf.length);
+                    try {
+                        mSocket.receive(packet);
+                        for (IncomingAudioListener listener : mIncomingAudioListeners) {
+                            listener.onIncomingAudio(buf);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }.execute();
+    }
+
+    public void sendAudioBytes (byte [] audio) {
+        for (Byte b : audio) {
+            mOutputAudioBuffer.add(b);
         }
     }
 
@@ -61,4 +124,7 @@ public class ServerClient {
             quads[k] = (byte) ((broadcast >> k * 8) & 0xFF);
         return InetAddress.getByAddress(quads);
     }
+
+
+
 }
