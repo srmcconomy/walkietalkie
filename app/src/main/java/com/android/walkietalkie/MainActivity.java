@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mServerClient = new ServerClient();
+        mServerClient = new ServerClient(this);
         mAudioOutputManager = new AudioReceiverManager(mServerClient);
         mAudioRecordingManager = new AudioRecordingManager(mServerClient);
 
