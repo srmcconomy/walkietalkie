@@ -38,7 +38,7 @@ public class AudioRecordingManager {
                 short[] buffer = new short[mBufferSize];
                 while(isRecording) {
                     mRecorder.read(buffer, 0, mBufferSize);
-                    mServerClient.sendBytes(shortToByte(buffer));
+                    mServerClient.sendAudioBytes(shortToByte(buffer));
                 }
             }
         }, "Audio Recording Thread");
