@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ServerClient {
     private static final int BROADCAST_PORT = 5000;
-    private static final int MAX_BROADCAST_SIZE_BYTES = 65508;
+    public static final int MAX_BROADCAST_SIZE_BYTES = 65508;
 
     private Context mContext;
     private DatagramSocket mSocket;
@@ -56,14 +56,16 @@ public class ServerClient {
                 while(true) {
                     if (mOutputAudioBuffer.size() > MAX_BROADCAST_SIZE_BYTES) {
                         byte [] outgoingBytes = new byte[MAX_BROADCAST_SIZE_BYTES];
-                        Iterator<Byte> it = mOutputAudioBuffer.iterator();
-                        int count = 0;
-                        while (it.hasNext()) {
-                            outgoingBytes[count] = it.next();
-                            it.remove();
-                            count++;
-                            if (count == MAX_BROADCAST_SIZE_BYTES) {
-                                break;
+                        synchronized (mOutputAudioBuffer) {
+                            Iterator<Byte> it = mOutputAudioBuffer.iterator();
+                            int count = 0;
+                            while (it.hasNext()) {
+                                outgoingBytes[count] = it.next();
+                                it.remove();
+                                count++;
+                                if (count == MAX_BROADCAST_SIZE_BYTES) {
+                                    break;
+                                }
                             }
                         }
                         try {
@@ -104,8 +106,10 @@ public class ServerClient {
     }
 
     public void sendAudioBytes (byte [] audio) {
-        for (Byte b : audio) {
-            mOutputAudioBuffer.add(b);
+        synchronized (mOutputAudioBuffer) {
+            for (Byte b : audio) {
+                mOutputAudioBuffer.add(b);
+            }
         }
     }
 
